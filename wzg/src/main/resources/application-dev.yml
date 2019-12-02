@@ -1,0 +1,19 @@
+server:
+  port: 1024
+  servlet:
+    context-path: /wzg
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&allowMultiQueries=true
+
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: true
+#    fetchRegister: false
+#serviceUrl:
+#  defaultZone: http://${eureka.instance.hostname}:${1024}/eureka/
