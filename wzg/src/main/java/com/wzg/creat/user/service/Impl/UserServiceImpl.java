@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,5 +23,15 @@ public class UserServiceImpl implements UserService {
 //                userBean.getPage().getPageSize(), "");
         List<User> list = userMapper.selectAll();
         return list;
+    }
+
+    @Override
+    public void test(String s) {
+        System.out.println(s);
+    }
+
+    @Override
+    public List<Map<String, Object>> getResultByQuota(String sql) {
+        return userMapper.getResultByQuota(sql);
     }
 }

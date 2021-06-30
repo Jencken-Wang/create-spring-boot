@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 //@SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.wzg.creat")
+@ComponentScan(basePackages = "com.wzg")
 public class newController {
     @RequestMapping("/hello")
     @ResponseBody
