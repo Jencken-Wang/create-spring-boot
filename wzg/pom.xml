@@ -40,6 +40,35 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            <!-- 把jar包拷贝到指定目录位置 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-antrun-plugin</artifactId>-->
+<!--                <version>1.8</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>copy</id>-->
+<!--                        <phase>package</phase>-->
+<!--                        <configuration>-->
+<!--                            <tasks>-->
+<!--                                <copy todir="${basedir}/../../target/">-->
+<!--                                    <fileset dir="${project.build.directory}">-->
+<!--                                        <include name="${project.artifactId}-${project.version}.jar"/>-->
+<!--                                    </fileset>-->
+<!--                                </copy>-->
+<!--                            </tasks>-->
+<!--                        </configuration>-->
+<!--                        <goals>-->
+<!--                            <goal>run</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
@@ -103,6 +132,5 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>
