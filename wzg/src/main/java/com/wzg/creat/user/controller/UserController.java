@@ -1,6 +1,7 @@
 package com.wzg.creat.user.controller;
 
 
+import cn.hutool.core.convert.Convert;
 import com.wzg.creat.base.BaseController;
 import com.wzg.creat.common.ret.RetInfo;
 import com.wzg.creat.user.model.entity.User;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RequestMapping("/user")
 @RestController
@@ -83,5 +87,11 @@ public class UserController{
                 e.printStackTrace();
             }
         }
+    }
+
+
+
+    public void testThread(){
+
     }
 }

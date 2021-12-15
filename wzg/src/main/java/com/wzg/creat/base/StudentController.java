@@ -1,7 +1,9 @@
 package com.wzg.creat.base;
 
+import com.wzg.creat.user.controller.QueryThread;
 import com.wzg.creat.user.service.UserService;
 import com.wzg.util.ExecutionResult;
+import com.wzg.util.SpringApplicationContextHolder;
 import lombok.Data;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,9 @@ import javax.annotation.Resource;
 
 @RestController
 public class StudentController extends BaseController {
+
+    @Resource
+    SpringApplicationContextHolder contextHolder;
 
     public void changeCity(String a){
         setCity(a);
@@ -30,9 +35,15 @@ public class StudentController extends BaseController {
     }
 
 
-    public static void main(String[] args) {
-        StudentController studentController = new StudentController();
-        studentController.start();
+//    public static void main(String[] args) {
+////        StudentController studentController = new StudentController();
+////        studentController.start();
+//    }
+
+    @RequestMapping("/testThreadSql")
+    public void test(){
+        QueryThread queryThread = new QueryThread(contextHolder);
+        new Thread(queryThread).start();
     }
 
 }
