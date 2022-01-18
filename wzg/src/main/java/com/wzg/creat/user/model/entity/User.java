@@ -1,15 +1,9 @@
 package com.wzg.creat.user.model.entity;
 
 import lombok.Builder;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
 
-@Builder
-@Table(name = "t_user")
 public class User {
-    @Id
     private Short id;
 
     /**

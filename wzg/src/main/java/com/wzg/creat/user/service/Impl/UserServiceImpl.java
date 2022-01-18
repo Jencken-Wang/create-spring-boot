@@ -21,7 +21,8 @@ public class UserServiceImpl implements UserService {
 //        User user =
 //        Page page = PageHelper.startPage(userBean.getPage().getPageNum(),
 //                userBean.getPage().getPageSize(), "");
-        List<User> list = userMapper.selectAll();
+        List<User> list = null;
+                //userMapper.selectAll();
         return list;
     }
 
