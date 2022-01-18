@@ -32,10 +32,14 @@
         </commentGenerator>
 
         <!--数据源配置-->
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+<!--                        connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"-->
+<!--                        userId="root"-->
+<!--                        password="">-->
+<!--        </jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"
-                        userId="root"
-                        password="">
+                        connectionURL="jdbc:mysql://10.191.143.55:8086/cq_cloud?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="cloud" password="cloud!@1234">
         </jdbcConnection>
         <!--model包路径-->
         <javaModelGenerator targetPackage="com.wzg.creat.user.model.entity" targetProject="src/main/java"/>
@@ -45,7 +49,7 @@
         <javaClientGenerator targetPackage="com.wzg.creat.user.model.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
         <!--表配置，tableName支持%，表示全部生成-->
-        <table tableName="t_user" domainObjectName="User"
+        <table tableName="pm_unified_resources_summery_info_every_time" domainObjectName="PmUnifiedResourcesSummeryInfoEveryTime"
                enableInsert="false"
                enableSelectByExample="false"
                enableDeleteByExample="false"

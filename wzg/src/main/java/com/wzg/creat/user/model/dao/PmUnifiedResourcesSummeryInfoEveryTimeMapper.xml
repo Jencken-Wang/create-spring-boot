@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wzg.creat.user.model.mapper.PmUnifiedResourcesSummeryInfoEveryTimeMapper">
+  <resultMap id="BaseResultMap" type="com.wzg.creat.user.model.entity.PmUnifiedResourcesSummeryInfoEveryTime">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cpu_avg" jdbcType="DOUBLE" property="cpuAvg" />
+    <result column="cpu_avg_max" jdbcType="DOUBLE" property="cpuAvgMax" />
+    <result column="mem_avg" jdbcType="DOUBLE" property="memAvg" />
+    <result column="mem_avg_max" jdbcType="DOUBLE" property="memAvgMax" />
+    <result column="resource_type" jdbcType="VARCHAR" property="resourceType" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+  </resultMap>
+</mapper>
