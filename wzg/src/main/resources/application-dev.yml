@@ -5,12 +5,12 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password:
-    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&allowMultiQueries=true
-#    username: cloud
-#    password: cloud!@1234
-#    url: jdbc:mysql://10.191.143.55:8086/sx_cloud?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+#    username: root
+#    password:
+#    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&allowMultiQueries=true
+    username: cloud
+    password: cloud!@1234
+    url: jdbc:mysql://10.191.143.55:8086/cq_cloud?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
 
 #eureka:
 #  instance:

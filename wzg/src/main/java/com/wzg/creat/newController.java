@@ -1,7 +1,10 @@
 package com.wzg.creat;
 
+import com.wzg.creat.common.injectTest.InjectClassDemo;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +21,9 @@ public class newController {
         return "Hello world";
     }
     public static void main(String[] args){
-        SpringApplication.run(newController.class,args);
+        ConfigurableApplicationContext run = SpringApplication.run(newController.class, args);
+        run.getBean("injectClassDemo", InjectClassDemo.class);
+        System.out.println(1111);
         System.out.println("                                                                                                                                                                                               \n" +
                 "                   _ooOoo_\n" +
                 "                  o8888888o\n" +
