@@ -21,11 +21,13 @@ public class MybatisPlusGenerator {
                             .outputDir(projectPath + "/wzg/src/main/java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
-                    builder.parent("com.wzg.user") // 设置父包名
-                            .moduleName("model")// 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath + "/wzg/src/main/java/com/wzg/creat/user/model/dao")) // 设置mapperXml生成路径
-                            .pathInfo(Collections.singletonMap(OutputFile.entity, projectPath + "/wzg/src/main/java/com/wzg/creat/user/model/entity"))
-                            .pathInfo(Collections.singletonMap(OutputFile.mapper, projectPath + "/wzg/src/main/java/com/wzg/creat/user/model/mapper"));
+                    builder.parent("com.wzg.creat") // 设置父包名
+                            .moduleName("addData")// 设置父包模块名
+                            .mapper("model.mapper")
+                            .entity("model.entity")
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath + "/wzg/src/main/java/com/wzg/creat/addData/model/xml")); // 设置mapperXml生成路径
+//                            .pathInfo(Collections.singletonMap(OutputFile.entity, projectPath + "/wzg/src/main/java/com/wzg/creat/user/model/entity"))
+//                            .pathInfo(Collections.singletonMap(OutputFile.mapper, projectPath + "/wzg/src/main/java/com/wzg/creat/user/model/mapper"));
 
                 })
                 .strategyConfig(builder -> {
@@ -33,6 +35,9 @@ public class MybatisPlusGenerator {
                             .addTablePrefix("t_", "c_"); // 设置过滤表前缀
                 })
 //                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateConfig(builder -> {
+                    builder.controller(null);
+                })
                 .execute();
     }
 

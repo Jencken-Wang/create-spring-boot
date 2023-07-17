@@ -5,13 +5,37 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-#    username: root
-#    password:
-#    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&allowMultiQueries=true
-    username: cloud
-    password: cloud!@1234
-    url: jdbc:mysql://10.191.143.55:8086/cq_cloud?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
-
+    username: admin
+    password: 123456
+    url: jdbc:mysql://192.168.6.206:3306/meituan?characterEncoding=UTF-8&allowMultiQueries=true
+#    username: cloud
+#    password: cloud!@1234
+#    url: jdbc:mysql://10.191.143.55:8086/cq_cloud?useUnicode=true&serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  rabbitmq:
+    addresses: 192.168.6.206
+    port: 5672
+    username: admin
+    password: abcd1234
+    virtual-host: /test_mq
+    publisher-confirm-type: correlated #开启发布确认（消息到达rabbitmq服务）
+    publisher-returns: true #开启发布返回确认（消息从交换机到达队列）
+#    template:
+#      mandatory: true #mandatory标志说明开启了消息故障检测模式，它只会让RabbitMq向你通知失败，而不会通知成功.当交换器根据自身和路由键无法找到合适的队列时，当mandatory设置为true，会通过Basic.Return RPC命令将消息返回给发布者；当mandatory设置为false时，该消息被直接丢弃。
+    listener:
+      simple:
+        #  采用手动应答
+        acknowledge-mode: manual
+#        #  当前监听容器数
+#        concurrency: 1
+#        #  最大数
+#        max-concurrency: 1
+#        #  是否支持重试
+#        retry:
+#          enabled: true
 #eureka:
 #  instance:
 #    hostname: localhost

@@ -1,5 +1,6 @@
 import com.wzg.creat.user.model.entity.User;
 import com.wzg.util.DoubleCheckSingleton;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -7,16 +8,17 @@ import org.aspectj.weaver.ast.Literal;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.yaml.snakeyaml.reader.StreamReader;
 
 import javax.sound.midi.Soundbank;
+import java.io.*;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -223,6 +225,37 @@ public class test {
         Type type1 = new Type();
 //        TypeParent parent = (TypeParent) type1;
 
+    }
+
+
+    @Test
+    public void test8() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IOException {
+
+        try {
+
+        } catch (Exception e) {
+            ExceptionSOut(e);
+        }
+    }
+
+    public <T> void sort(T obj){
+        if (obj instanceof Integer) {
+            System.out.println(obj.toString());
+        } else {
+            System.out.println(obj);
+        }
+
+    }
+
+
+    public void ExceptionSOut(Exception e) throws IOException {
+        try(StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);){
+            e.printStackTrace(printWriter);
+            System.out.println(stringWriter.toString());
+        } catch(NullPointerException e1) {
+            System.out.println("no wirter to close");
+        }
     }
 
 }

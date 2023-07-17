@@ -1,32 +1,29 @@
-//import cn.hutool.json.JSONUtil;
-//import com.wzg.creat.newController;
-//import com.wzg.creat.user.model.entity.PmUnifiedResourcesSummeryInfoEveryTime;
-//import com.wzg.creat.user.model.mapper.PmUnifiedResourcesSummeryInfoEveryTimeMapper;
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-//
-//import javax.annotation.Resource;
-//import java.util.ArrayList;
-//import java.util.Calendar;
-//import java.util.Comparator;
-//import java.util.List;
-//
-//@SpringBootTest(classes = newController.class)
-//@RunWith(SpringJUnit4ClassRunner.class)
-//public class AddBetweenTest {
-//
+import com.wzg.creat.addData.service.IPmUnifiedResourcesSummeryInfoEveryTimeService;
+import com.wzg.creat.newController;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
+
+@SpringBootTest(classes = newController.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+public class AddBetweenTest {
+
+    @Resource
+    IPmUnifiedResourcesSummeryInfoEveryTimeService summeryInfoEveryTimeService;
+
 //    @Resource
 //    PmUnifiedResourcesSummeryInfoEveryTimeMapper everyTimeMapper;
-//
-//
+
 //    @Test
 //    public void add() {
 //
 //        PmUnifiedResourcesSummeryInfoEveryTime everyTime = new PmUnifiedResourcesSummeryInfoEveryTime();
 //        everyTime.setResourceType("onlineServer");
-//        List<PmUnifiedResourcesSummeryInfoEveryTime> list = everyTimeMapper.select(everyTime);
+//        List<PmUnifiedResourcesSummeryInfoEveryTime> list = everyTimeMapper.selectList(new QueryWrapper<PmUnifiedResourcesSummeryInfoEveryTime>()
+//                .eq("resourceType", "onlineServer"));
 //
 //        list.sort(Comparator.comparing(PmUnifiedResourcesSummeryInfoEveryTime::getInsertTime)) ;
 //
@@ -37,7 +34,7 @@
 //                PmUnifiedResourcesSummeryInfoEveryTime everyNext = list.get(i + 1);
 ////                System.out.println(DateUtil.formatDateTime(everyNow.getInsertTime()));
 //                Calendar ca = Calendar.getInstance();
-//                ca.setTime(everyNow.getInsertTime());
+//                ca.setTime(LocalDateTimeUtil.everyNow.getInsertTime());
 //                ca.set(Calendar.SECOND, 0);
 //                ca.set(Calendar.MILLISECOND, 0);
 //                long startTime = ca.getTimeInMillis();
@@ -65,6 +62,13 @@
 //            everyTimeMapper.insert(addTime);
 //        }
 //    }
-//
-//
-//}
+
+
+    @Test
+    public void test1() {
+        summeryInfoEveryTimeService.add("hypervisor");
+        summeryInfoEveryTimeService.add("vmhost");
+
+    }
+
+}
