@@ -1,4 +1,5 @@
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.wzg.creat.addData.model.entity.PmUnifiedResourcesSummeryInfoEveryTime;
 import org.junit.Test;
@@ -99,5 +100,24 @@ public class test2 {
     }
 
 
+    @Test
+    public void testLogic() {
+
+        System.out.println(true || false && true);
+        System.out.println(true || false && false);
+        System.out.println(true && false || true);
+        System.out.println(true && false || false);
+
+        System.out.println(false || true && false  || true && false);
+    }
+
+    @Test
+    public void testAccess() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("第" + i+ "次访问");
+            HttpUtil.get("http://localhost:1024/wzg/rpublish");
+        }
+
+    }
 
 }

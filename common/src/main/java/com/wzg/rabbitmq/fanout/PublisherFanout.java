@@ -1,9 +1,8 @@
 package com.wzg.rabbitmq.fanout;
 
-import com.rabbitmq.client.BuiltinExchangeType;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.*;
+import org.springframework.amqp.core.MessageDeliveryMode;
+import org.springframework.amqp.core.MessageProperties;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -73,6 +72,10 @@ public class PublisherFanout {
         channel.queueBind(queue_4, exchangeName, key_4);
 
 
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setDeliveryMode(MessageDeliveryMode.PERSISTENT);
+
+
         String message = "Hellow RabbitMQ!";
         /** 
          * @description: 发送消息 
@@ -81,7 +84,7 @@ public class PublisherFanout {
          * @author wangzg
          * @date: 2023/7/11 1:56
          */
-        channel.basicPublish(exchangeName, key_1,null, "k1 fanout message1".getBytes());
+        channel.basicPublish(exchangeName, key_1, com.rabbitmq.client.MessageProperties.PERSISTENT_TEXT_PLAIN, "k1 fanout message1".getBytes());
 
 
         channel.close();

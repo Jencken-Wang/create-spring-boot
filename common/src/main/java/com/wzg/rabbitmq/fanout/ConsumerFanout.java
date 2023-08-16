@@ -22,8 +22,8 @@ public class ConsumerFanout {
 
         Channel channel = connection.createChannel();
 
-        DeliverCallback deliverCallback = (ConsumerTage, message) ->{
-            System.out.println(  ConsumerTage+"收到消息" + new String(message.getBody()));
+        DeliverCallback deliverCallback = (ConsumerTage, delivery) ->{
+            System.out.println(  ConsumerTage+"收到消息" + new String(delivery.getBody()));
 
         };
 
@@ -43,8 +43,7 @@ public class ConsumerFanout {
 //        channel.basicConsume(queue_2, true, deliverCallback, cancelCallback);
 //        channel.basicConsume(queue_3, true, deliverCallback, cancelCallback);
         channel.basicConsume(queue_4, false, deliverCallback, cancelCallback);
-//        channel.basicConsume(queue_4, defaultConsumer);
-//        channel.basicAck();
+//        channel.basicConsume(queue_4,false, defaultConsumer);
 //        channel.basicAck();
 //        channel.close();
 //        connection.close();

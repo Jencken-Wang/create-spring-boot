@@ -1,20 +1,13 @@
 package com.wzg.rabbitmq;
 
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.CorrelationData;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Component
 @Configuration
 public class RabbitmqUtil {
 
@@ -23,11 +16,6 @@ public class RabbitmqUtil {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
-
-    @Bean
-    MessageConverter messageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
 
 
     @PostConstruct
@@ -71,7 +59,9 @@ public class RabbitmqUtil {
 
         });
     }
-    
+
+
+
     
     /** 
      * @description: 绑定队列和交换机，没有则创建
@@ -82,6 +72,15 @@ public class RabbitmqUtil {
         amqpAdmin.declareExchange(new ExchangeBuilder(exchange, type).durable(true).build());
         amqpAdmin.declareQueue(QueueBuilder.durable(queue).build());
         amqpAdmin.declareBinding(new Binding(queue, Binding.DestinationType.QUEUE, exchange, key, null));
+
+    }
+
+    @Bean
+    public void bindNeeded() {
+        this.exchangeBindQueue(RabbitMQCommon.wzg_direct_change_name, ExchangeTypes.DIRECT, RabbitMQCommon.wzg_queue_name_1, RabbitMQCommon.dkey1);
+        this.exchangeBindQueue(RabbitMQCommon.wzg_topic_change_name, ExchangeTypes.TOPIC, RabbitMQCommon.wzg_queue_name_1, "wzgkey1.#");
+        this.exchangeBindQueue(RabbitMQCommon.wzg_topic_change_name, ExchangeTypes.TOPIC, RabbitMQCommon.wzg_queue_name_2, "#.wzgkey2");
+
 
     }
 

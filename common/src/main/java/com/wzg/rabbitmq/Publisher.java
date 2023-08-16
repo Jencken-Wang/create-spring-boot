@@ -1,9 +1,6 @@
 package com.wzg.rabbitmq;
 
-import com.rabbitmq.client.BuiltinExchangeType;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.*;
 import lombok.Value;
 
 import java.io.IOException;
@@ -24,6 +21,7 @@ public class Publisher {
         Connection connection = factory.newConnection();
 
         Channel channel = connection.createChannel();
+
 
 
         /**
@@ -57,6 +55,28 @@ public class Publisher {
         channel.queueBind(queueName, exchangeName, queueName);
 
 
+        //开启confirm
+        channel.confirmSelect();
+        channel.addConfirmListener(new ConfirmListener() {
+            /**
+             *  消息成功发送
+             * @param deliveryTag   消息唯一标签
+             * @param multiple  是否批量
+             * @throws IOException
+             */
+            @Override
+            public void handleAck(long deliveryTag, boolean multiple) throws IOException {
+                System.out.println(deliveryTag);
+                System.out.println("接收消息成功");
+            }
+
+            @Override
+            public void handleNack(long deliveryTag, boolean multiple) throws IOException {
+                System.out.println("接收消息失败");
+
+            }
+        });
+
         String message = "Hellow RabbitMQ!";
         /** 
          * @description: 发送消息 
@@ -68,8 +88,9 @@ public class Publisher {
         channel.basicPublish(exchangeName, queueName,null, message.getBytes());
 
 
-        channel.close();
-        connection.close();
+
+//        channel.close();
+//        connection.close();
 
     }
 
